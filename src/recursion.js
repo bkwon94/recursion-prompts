@@ -90,11 +90,46 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+
+let sum = 0;
+// base
+if (n === 0 || n === 1 ) {
+  return sum;
+}
+// if negative, call func with positive and multiply result by -1
+if (n < 0) {
+  return sumBelow(-n) * -1;
+} else {
+  n = n - 1;
+  sum += n;
+  return sum + sumBelow(n);
+}
+
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  // create array for range
+  let inBetween = [];
+  // value of newX based on if x < y or x > y
+  let newX;
+  if (x < y) {
+    newX = x + 1;
+  } else {
+    newX = x - 1;
+  }
+  // if x = y return or if newX is y
+  // this is our base case!!
+  if (newX === y || x === y) {
+    return inBetween;
+  } else {
+    // recursive case
+    inBetween.push(newX);
+    return inBetween.concat(range(newX, y));
+  }// push x + 1
+
+
 };
 
 // 7. Compute the exponent of a number.
